@@ -1,17 +1,20 @@
 class TipoPago {
-  final int idtipoPago;
-  final String nombretipoPago;
+  final int idTipoPago;
+  final String nombre;
 
   TipoPago({
-    required this.idtipoPago,
-    required this.nombretipoPago,
+    required this.idTipoPago,
+    required this.nombre,
   });
 
   Map<String, dynamic> toMap() {
     return {
-      'idtipoPago': idtipoPago,
-      'nombretipoPago': nombretipoPago,
+      'idtipo_pago': idTipoPago,
+      'nombre': nombre,
     };
   }
-
+  @override
+  String toString() {
+    return 'TipoPago{idTipoPago: $idTipoPago, nombre: $nombre}';
+  }
 }

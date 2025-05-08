@@ -1,20 +1,25 @@
 class Usuario {
-  final String id;
+  final int idusuario;
   final String nombre;
-
+  final String clave;
 
   Usuario({
-    required this.id,
-    required this.nombre
+    required this.idusuario ,
+    required this.nombre,
+    required this.clave,
     });
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      'idUsuario': idusuario,
       'nombre': nombre,
+      'clave': clave,
     };
   }
-            
+  @override
+  String toString() {
+    return 'Usuario{idusuario: $idusuario, nombre: $nombre, clave: $clave}';
+  }          
 
   
  }
