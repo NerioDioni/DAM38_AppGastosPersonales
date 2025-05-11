@@ -1,14 +1,15 @@
-import 'package:dam38_appgastospersonales/model/metodo_pago.dart' show MetodoPago;
+
 import 'package:dam38_appgastospersonales/model/tipo_gasto.dart';
+import 'package:dam38_appgastospersonales/model/tipo_pago.dart';
 import 'package:dam38_appgastospersonales/model/usuario.dart' show Usuario;
 
 class CuentaGastos {
-  final int idgasto;  
+   int idgasto;  
   final String descripcion;
   final DateTime fecha; // Assuming this is a date string in 'YYYY-MM-DD' format
   final double monto;
   final TipoGasto tipoGasto; // Assuming TipoGasto is a class you have defined
-  final MetodoPago metodoPago; // Assuming MetodoPago is a class you have defined   
+  final TipoPago tipoPago; // Assuming MetodoPago is a class you have defined   
   final Usuario usuario; // Assuming Usuario is a class you have defined
   
   
@@ -18,9 +19,10 @@ class CuentaGastos {
     required this.fecha,
     required this.monto,
     required this.tipoGasto,
-    required this.metodoPago,
+    required this.tipoPago,
     required this.usuario,
   });
+  
 
   Map<String, dynamic> toMap() {
     return {
@@ -29,7 +31,7 @@ class CuentaGastos {
       'fecha': fecha,
       'monto': monto,
       'tipoGasto': tipoGasto.toMap(), // Assuming TipoGasto has a toMap() method
-      'metodoPago': metodoPago.toMap(), // Assuming MetodoPago has a toMap() method
+      'metodoPago': tipoPago.toMap(), // Assuming MetodoPago has a toMap() method
       'usuario': usuario.toMap(), // Assuming Usuario has a toMap() method    
     };
   }
@@ -43,8 +45,23 @@ class CuentaGastos {
   }
   @override
   String toString() {
-    return 'CuentaGastos{idgasto: $idgasto, descripcion: $descripcion, fecha: $fecha, monto: $monto, tipoGasto: $tipoGasto, metodoPago: $metodoPago, usuario: $usuario}';
+    return 'CuentaGastos{idgasto: $idgasto,descripcion: $descripcion, fecha: $fecha,monto: $monto, tipoGasto: $tipoGasto, tipoPago: $tipoPago, usuario: $usuario}';
   }
-  
+
+  String getIdGasto() => idgasto.toString();
+  String getDescripcion() => descripcion;
+  //get getFecha => fecha;  
+  String  getMonto() => monto.toString();
+  TipoGasto getTipoGasto() => tipoGasto;
+  TipoPago getTipoPago() => tipoPago;
+  Usuario getUsuario() => usuario;
+  set setIdGasto(int idGasto) => idgasto = idGasto;
+  set setDescripcion(String descripcion) => descripcion = descripcion;
+  set setFecha(DateTime fecha) => fecha = fecha;
+  set setMonto(double monto) => monto = monto;
+  set setTipoGasto(TipoGasto tipoGasto) => tipoGasto = tipoGasto;
+  set setTipoPago(TipoPago tipoPago) => tipoPago = tipoPago;   
+  set setUsuario(Usuario usuario) => usuario = usuario; 
+    
 }
 

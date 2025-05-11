@@ -21,6 +21,7 @@ final int idTipoGasto;
   String toString() {
     return 'TipoGasto{idTipoGasto: $idTipoGasto, nombre: $nombre, Codigo: $Codigo}';
   }
+  String getIdTipoGasto() => Codigo;
   
 
 

@@ -3,6 +3,7 @@ import 'package:dam38_appgastospersonales/repositories/db_handler.dart';
 
 class RepositoryUsuario {
   final dbhandeler = databaseHandler();
+  List<Usuario> Usuarios = [];
 
   Future<List<Usuario>> listUsuarios() async {
     final mydb = await dbhandeler.openDataBase();
@@ -26,6 +27,26 @@ class RepositoryUsuario {
     print( await listUsuarios());
     
   }
+Future<void> setListUsuarios() async{
+  final mydb = await dbhandeler.openDataBase();
+  final List<Map<String, dynamic>> usuariosMaps = await mydb.query('usuarios');
+  await mydb.close();
+  Usuarios = [
+      for (final {
+        'idusuario': idusuario as int,
+        'nombre': nombre as String,
+        'clave': clave as String,
+      } in usuariosMaps)
+        Usuario(
+          idusuario: idusuario,
+          nombre: nombre,
+          clave: clave,
+        ),
+  ];
+  print(Usuarios);
+    
+}
+
 //agregar metodo getbyid
   Future<Usuario> getUsuarioById(int id) async {
     final mydb = await dbhandeler.openDataBase();

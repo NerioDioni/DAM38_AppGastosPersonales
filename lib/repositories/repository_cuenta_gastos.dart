@@ -1,18 +1,21 @@
 import 'package:dam38_appgastospersonales/model/cuentaGastos.dart';
-import 'package:dam38_appgastospersonales/model/metodo_pago.dart';
+
 import 'package:dam38_appgastospersonales/model/tipo_gasto.dart';
 import 'package:dam38_appgastospersonales/model/tipo_pago.dart';
 import 'package:dam38_appgastospersonales/model/usuario.dart';
 import 'package:dam38_appgastospersonales/repositories/db_handler.dart';
-import 'package:dam38_appgastospersonales/repositories/repository_metodo_pago.dart';
+
 import 'package:dam38_appgastospersonales/repositories/repository_tipo_gasto.dart';
+import 'package:dam38_appgastospersonales/repositories/repository_tipo_pago.dart';
 import 'package:dam38_appgastospersonales/repositories/repository_usuario.dart';
 
 class RepositoryCuentaGastos {
   final dbhandeler = databaseHandler();
   final repositoryUsuario = RepositoryUsuario();
   final repositoryTipoGasto = RepositoryTipoGasto();
-  final repositoryMetodoPago = RepositoryMetodoPago();
+  final repositoryTipoPago = RepositoryTipoPago();
+  
+  
 
   Future<List<CuentaGastos>> listCuentasGastos() async {
     final mydb = await dbhandeler.openDataBase();
@@ -25,7 +28,7 @@ class RepositoryCuentaGastos {
         'fecha': fecha as String,
         'monto': monto as double,
         'idtipo_gasto': idTipoGasto as int,
-        'idmetodo_pago': idMetodoPago as int,
+        'idtipo_pago': idTipoPago as int,
         'idusuario': idUsuario as int,
       } in cuentasGastosMaps)
         CuentaGastos(
@@ -34,7 +37,7 @@ class RepositoryCuentaGastos {
           fecha: DateTime.parse(fecha),
           monto: monto,
           tipoGasto: await repositoryTipoGasto.getTipoGastoById(idTipoGasto),
-          metodoPago: await repositoryMetodoPago.getMetodoPagoById(idMetodoPago),
+          tipoPago: await repositoryTipoPago.getTipoPagoById(idTipoPago),
           usuario: await repositoryUsuario.getUsuarioById(idUsuario),
         ),
     ];
@@ -55,7 +58,7 @@ class RepositoryCuentaGastos {
         fecha: DateTime.parse(cuentasGastosMaps[0]['fecha'].toString()),
         monto: double.parse(cuentasGastosMaps[0]['monto'].toString()),
         tipoGasto: await repositoryTipoGasto.getTipoGastoById(int.parse(cuentasGastosMaps[0]['idtipo_gasto'].toString())),
-        metodoPago: await repositoryMetodoPago.getMetodoPagoById(int.parse(cuentasGastosMaps[0]['idmetodo_pago'].toString())),
+        tipoPago: await repositoryTipoPago.getTipoPagoById(int.parse(cuentasGastosMaps[0]['idtipo_pago'].toString())),
         usuario: await repositoryUsuario.getUsuarioById(int.parse(cuentasGastosMaps[0]['idusuario'].toString())),
       );
     }
@@ -65,9 +68,7 @@ class RepositoryCuentaGastos {
       fecha: DateTime.now(),
       monto: 0.0,
       tipoGasto: TipoGasto(idTipoGasto: 0, nombre: 'No encontrado', Codigo: 'No encontrado'),
-      metodoPago: MetodoPago(idMetodoPago: 0, numeroCuenta: 'No encontrado',
-         tipoPago: TipoPago(idTipoPago: 0, nombre: 'No encontrado'),
-         usuario: Usuario(idusuario: 0, nombre: 'No encontrado', clave: 'No encontrado')),
+      tipoPago:  TipoPago(idTipoPago: 0, nombre: 'No encontrado'),      
       usuario: Usuario(idusuario: 0, nombre: 'No encontrado', clave: 'No encontrado'),
     );
   }
@@ -75,6 +76,16 @@ class RepositoryCuentaGastos {
   Future<void> printCuentasGastos() async {
     print(await listCuentasGastos());
   }
+
+Future<int> deleteById(int id) async {
+  final mydb = await dbhandeler.openDataBase();
+  int result = await mydb.delete('cuenta_gastos',
+        where: 'idgasto = ?',
+        whereArgs: [id]);
+  await mydb.close();
+  return result;
+  }
+
 
 
 

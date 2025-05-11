@@ -1,4 +1,5 @@
 import 'package:dam38_appgastospersonales/viewmodels/repositories_data.dart';
+import 'package:dam38_appgastospersonales/views_test/view_login.dart';
 import 'package:flutter/material.dart';
 
 class MyApp38 extends StatelessWidget {
@@ -9,8 +10,8 @@ class MyApp38 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
-      title: 'Flutter de saqlite Demo',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 183, 58, 173)),),
+      title: 'Registro Gastos Personales',
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 86, 165, 41)),),
       home:  MyHomePage(title: 'Flu Demo db Sqlite Home Page'),
     );
   }
@@ -26,6 +27,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final repositoriesData=repositoriesdataViewModel();
+  //final repositorydatos =RepositoryUsuario();
   int _counter = 0;
   int _oposivecounter = 0;
   void _incrementCounter() {
@@ -39,37 +41,47 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      //debugPaintSizeEnabled: true,
       appBar: AppBar(       
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
+      
       body: Center(
         child: Column(
           
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+
             ElevatedButton(onPressed: (){repositoriesData.printAllRepositories();},
               child: const Text('Imprimir todos los repositorios')),
-            //ElevatedButton(onPressed: (){;}, child: const Text('Mostrar')),
-            //ElevatedButton(onPressed: (){;}, child: const Text('borar lastUsuario')),
-            //ElevatedButton(onPressed: (){_borrarTabla();}, child: const Text('borar tabla')),
+            ElevatedButton(onPressed: (){repositoriesData.printAllRepositories();},
+              child: const Text('Imprimir todos los repositorios')),
+            ElevatedButton(
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ViewLogin(),
+                  )     ,
+                );
+              },
+              child: const Text('vista login')),
             
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.displayLarge,
-            ),
-            Text(
-              '$_oposivecounter',
-              style: Theme.of(context).textTheme.headlineLarge,
-            ),
           ],
         ),
       ),
+      
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ViewLogin(),
+                  ),
+                );
+                },
+        tooltip: 'Nuevo Registro',
         child: const Icon(Icons.add)
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
