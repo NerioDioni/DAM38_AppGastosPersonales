@@ -230,6 +230,22 @@ class _GastosViewState extends State<GastosView> {
       //var map=_monthByYearList[0];
       _cargarListGastos();
         });
+    }else{
+      setState(() {
+      _monthByYearList=[];
+      dropDownValue="";
+      _controllerAnio="";
+      _controlllerMes="";
+      /*print(_monthByYearList);
+      print("año: $_controllerAnio");
+      print("mes: $_controlllerMes");
+      //var map=_monthByYearList[0];
+      */
+      _cargarListGastos();
+        });
+
+
+
     }
   }
 
@@ -240,6 +256,9 @@ class _GastosViewState extends State<GastosView> {
       _gastosList =listgastos;
       if(montoMap.isNotEmpty&&montoMap['total_mes']!=null){
         _montoGastoMesAnio=double.parse(montoMap['total_mes'].toString());     
+      }else{
+        _montoGastoMesAnio=0;
+
       }
       
       //var map=_monthByYearList[0];
@@ -294,7 +313,8 @@ class _GastosViewState extends State<GastosView> {
       }));
 
       if (result == true) {
-        _cargarListGastos();
+        _cargarMonthBYyearList();
+        //_cargarListGastos();
       }
     }else if (regGasto==null){
       final user=await repositoryUser.getUsuarioById(idUsuarioApp);
@@ -315,7 +335,7 @@ class _GastosViewState extends State<GastosView> {
       }));
 
       if (result == true) {
-        _cargarListGastos();
+        _cargarMonthBYyearList();
       }
 		}
 
