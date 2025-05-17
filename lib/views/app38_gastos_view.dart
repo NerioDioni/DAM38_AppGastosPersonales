@@ -1,4 +1,4 @@
-import 'package:dam38_appgastospersonales/views/gastos_view.dart';
+import 'package:dam38_appgastospersonales/views/resume_gastos_view.dart';
 import 'package:flutter/material.dart';
 
 class App38GastosView extends StatelessWidget {
@@ -11,7 +11,7 @@ class App38GastosView extends StatelessWidget {
     return  MaterialApp(
       //debugPaintSizeEnabled: true,
       title: 'Gastos personales',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 68, 204, 209)),),
+      //theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 180, 223, 243)),),
       home:  GastosView(title: 'MAIN BOARD'),
     );
   }

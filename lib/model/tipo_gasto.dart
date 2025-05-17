@@ -1,7 +1,9 @@
+//import 'dart:ffi';
+
 class TipoGasto {
-final int idTipoGasto;
-  final String nombre;
-  final String Codigo;
+ int idTipoGasto;
+ String nombre;
+ String Codigo;
   
 
   TipoGasto({
@@ -10,7 +12,7 @@ final int idTipoGasto;
     required this.Codigo
   });
   
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic>? toMap() {
     return {
       'idtipo_gasto': idTipoGasto,
       'nombre': nombre,
@@ -21,7 +23,9 @@ final int idTipoGasto;
   String toString() {
     return 'TipoGasto{idTipoGasto: $idTipoGasto, nombre: $nombre, Codigo: $Codigo}';
   }
-  String getIdTipoGasto() => Codigo;
+  String getCodigoTipoGasto() => Codigo;
+  String getIdTipoGasto()=> idTipoGasto.toString();
+  String getNombre()=> nombre;
   
 
 

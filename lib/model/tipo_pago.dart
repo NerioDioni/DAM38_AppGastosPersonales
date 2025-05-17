@@ -17,4 +17,6 @@ class TipoPago {
   String toString() {
     return 'TipoPago{idTipoPago: $idTipoPago, nombre: $nombre}';
   }
+  String getIdTipoPago() => idTipoPago.toString();
+  String getNombre()=> nombre;
 }
