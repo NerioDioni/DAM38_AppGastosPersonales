@@ -5,9 +5,8 @@ import 'package:dam38_appgastospersonales/model/usuario.dart';
 import 'package:dam38_appgastospersonales/repositories/repository_cuenta_gastos.dart';
 import 'package:dam38_appgastospersonales/repositories/repository_usuario.dart';
 import 'package:dam38_appgastospersonales/views/detalle_gastos_view.dart';
-import 'package:dam38_appgastospersonales/views_test/conteiner1.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+//import 'package:flutter/rendering.dart';
 //importar debugPaintSizeEnabled class
 
 class GastosView extends StatefulWidget {
@@ -29,24 +28,16 @@ class _GastosViewState extends State<GastosView> {
   var dropDownValue;
   double _montoGastoMesAnio=0;
   
-
-
-  
   @override
   void initState() {
-    
     super.initState();
     _cargarMonthBYyearList();
-    
-    
+        
   }
   
   @override
   Widget build(BuildContext context) {
     //debugPaintSizeEnabled = true;
-    /*if (_gastosList.isEmpty) {
-      //_cargarListGastos();
-    }*/
     
     return SafeArea( 
       child: Scaffold(        
@@ -54,12 +45,8 @@ class _GastosViewState extends State<GastosView> {
         body: Container(
           //color: const Color.fromARGB(255, 243, 221, 245),
           padding: const EdgeInsets.all(10),              
-          child: Column(
-          //mainAxisAlignment:MainAxisAlignment.spaceAround,
-          //mainAxisSize: MainAxisSize.max,        
-            children: [
-              
-
+          child: Column(      
+            children: [              
               Container(
               width: MediaQuery.of(context).size.width, 
               color: const Color.fromARGB(255, 205, 215, 247),
@@ -151,10 +138,8 @@ class _GastosViewState extends State<GastosView> {
                     child: Icon(Icons.delete, color: Colors.grey,),
                     onTap: () {
                       _deleteGasto(context, _gastosList[index]);
-                      
                     },
                   ),
-                  
                 ],
               ),
             ),
@@ -184,8 +169,6 @@ class _GastosViewState extends State<GastosView> {
                 'Nuevo Gasto',
                 null,
               ); 
-            //Navigator.pushNamed(context, '/nuevo');
-            //Navigator.pushNamed(context, '/');
           },
         ),
       ],
@@ -224,10 +207,7 @@ class _GastosViewState extends State<GastosView> {
       dropDownValue=_monthByYearList[0]['id'];
       _controllerAnio=_monthByYearList[0]['anio'].toString();
       _controlllerMes=_monthByYearList[0]['mes'].toString();
-      print(_monthByYearList);
-      print("año: $_controllerAnio");
-      print("mes: $_controlllerMes");
-      //var map=_monthByYearList[0];
+      
       _cargarListGastos();
         });
     }else{
@@ -236,11 +216,6 @@ class _GastosViewState extends State<GastosView> {
       dropDownValue="";
       _controllerAnio="";
       _controlllerMes="";
-      /*print(_monthByYearList);
-      print("año: $_controllerAnio");
-      print("mes: $_controlllerMes");
-      //var map=_monthByYearList[0];
-      */
       _cargarListGastos();
         });
 
@@ -258,16 +233,10 @@ class _GastosViewState extends State<GastosView> {
         _montoGastoMesAnio=double.parse(montoMap['total_mes'].toString());     
       }else{
         _montoGastoMesAnio=0;
-
       }
-      
       //var map=_monthByYearList[0];
       });
-    
-  
-  
   } 
-
 
   IconData getTipoGastoIcon(String codigoTipo) {
 		switch (codigoTipo) {
