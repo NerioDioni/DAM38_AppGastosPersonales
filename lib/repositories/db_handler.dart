@@ -87,18 +87,18 @@ class databaseHandler{
       await db.execute('''
         INSERT INTO cuenta_gastos(fecha, monto, descripcion, idusuario, idtipo_gasto, idtipo_pago) VALUES
         ('2023-10-01', 100.0, 'Compra de comida', 1, 1, 1),
-        ('2023-10-02', 50.0, 'Pasaje de bus', 2, 2, 2),
-        ('2023-10-03', 200.0, 'Alquiler de casa', 3, 3, 3),
+        ('2023-10-02', 50.0, 'Pasaje de bus', 1, 2, 2),
+        ('2023-10-03', 200.0, 'Alquiler de casa', 1, 3, 3),
         ('2023-10-04', 150.0, 'Medicamentos', 1, 4, 4),
         ('2023-10-05', 300.0, 'Libros', 2, 5, 5),
-        ('2023-10-06', 80.0, 'Cine', 3, 6, 5),      
-        ('2023-10-09', 120.0, 'Compra de ropa', 3, 1, 1),
+        ('2023-10-06', 80.0, 'Cine', 1, 6, 5),      
+        ('2023-10-09', 120.0, 'Compra de ropa', 1, 1, 1),
         ('2023-10-10', 60.0, 'Gasolina', 1, 2, 2),
         ('2023-10-11', 250.0, 'Alquiler de oficina', 2, 3, 3),
-        ('2023-10-12', 90.0, 'Consulta medica', 3, 4, 4),
+        ('2023-10-12', 90.0, 'Consulta medica', 1, 4, 4),
         ('2023-10-13', 400.0, 'Cursos en linea', 1, 5, 5),
         ('2023-10-14', 70.0, 'Concierto', 2, 6, 3),
-        ('2023-10-15', 600.0, 'Pago de tarjeta de credito', 3, 6, 4);
+        ('2023-10-15', 600.0, 'Pago de tarjeta de credito', 1, 6, 4);
         
       ''');    
 

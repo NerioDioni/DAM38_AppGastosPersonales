@@ -20,7 +20,7 @@ class GastosView extends StatefulWidget {
 class _GastosViewState extends State<GastosView> { 
   final repositoryCuentaGastos=RepositoryCuentaGastos();
   final repositoryUser=RepositoryUsuario();
-  int idUsuarioApp=3;
+  int idUsuarioApp=1;
   List<CuentaGastos> _gastosList = [];
   List<Map<String,Object?>> _monthByYearList=[];
   String _controlllerMes="";
