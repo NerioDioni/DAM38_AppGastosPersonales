@@ -1,0 +1,3 @@
+rama principal de desarrollo
+en esa rama se fusionaran las demas ramas
+de los demas desarrolladores
