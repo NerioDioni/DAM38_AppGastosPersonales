@@ -62,8 +62,8 @@ class RepositoryCuentaGastos {
       WHERE idusuario=$idUser AND strftime('%Y', fecha)='$anio' AND strftime('%m', fecha)='$month'
       ORDER BY fecha DESC''');
     await mydb.close();
-    print("cuentaGAstosMpas desde repositorio");
-    print(cuentasGastosMaps);
+    //print("cuentaGAstosMpas desde repositorio");
+    //print(cuentasGastosMaps);
     
     return [
       for (final {
@@ -105,7 +105,7 @@ class RepositoryCuentaGastos {
       ''');
     await mydb.close();
     var montoMap=monto[0];
-    print(montoMap);
+    //print(montoMap);
     return montoMap;
     
   }
